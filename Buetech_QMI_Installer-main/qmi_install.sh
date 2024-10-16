@@ -4,8 +4,7 @@
 QMI installation script by Sixfab
 This script is strictly for Raspberry Pi OS.
 
-Created By Metin Koc, Nov 2018
-Maintainers: Saeed Johar, Yasin Kaya
+Created By Abdulhamit Mercan, Dec 2024
 '
 # Text colors
 YELLOW='\033[1;33m'
