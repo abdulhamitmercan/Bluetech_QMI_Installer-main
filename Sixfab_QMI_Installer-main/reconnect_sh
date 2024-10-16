@@ -1,0 +1,59 @@
+#!/bin/sh
+
+# Dışarıdan gelen APN, kullanıcı adı ve şifreyi al, eğer verilmeyen bir parametre varsa varsayılan değer kullan
+APN="${1:-internet}"
+USERNAME="${2:-default_user}"   # Varsayılan kullanıcı adı
+PASSWORD="${3:-default_pass}"   # Varsayılan şifre
+
+while true; do
+    # Ping ile bağlantıyı kontrol et
+    ping -I wwan0 -c 1 -s 0 8.8.8.8
+
+    # Eğer bağlantı başarılıysa
+    if [ $? -eq 0 ]; then
+        echo "Connection up, reconnect not required..."
+    else
+        echo "Connection down, reconnecting..."
+
+        # Modemi online moda geçir
+        mode=$(sudo qmicli -d /dev/cdc-wdm0 --dms-get-operating-mode)
+        if [[ "$mode" != *"online"* ]]; then
+            echo "Modem offline modda. Bağlanıyor..."
+            sudo qmicli -d /dev/cdc-wdm0 --dms-set-operating-mode='online'
+        else
+            echo "Modem zaten online modda."
+        fi
+
+        # WWAN0 arayüzünü yapılandır
+        echo "WWAN0 arayüzü yapılandırılıyor..."
+        sudo ip link set wwan0 down
+        echo 'Y' | sudo tee /sys/class/net/wwan0/qmi/raw_ip
+        sudo ip link set wwan0 up
+
+        # Veri formatını kontrol et
+        echo "Veri formatı kontrol ediliyor..."
+        sudo qmicli -d /dev/cdc-wdm0 --wda-get-data-format
+
+        # Mobil ağ bağlantısını başlat
+        echo "Mobil ağ bağlantısı başlatılıyor..."
+        sudo qmicli -p -d /dev/cdc-wdm0 --device-open-net='net-raw-ip|net-no-qos-header' --wds-start-network="apn='$APN',username='$USERNAME',password='$PASSWORD',ip-type=4" --client-no-release-cid
+
+        # IP adresini ve varsayılan yönlendirmeyi yapılandırmak için udhcpc komutunu çalıştır
+        echo "IP adresi ve varsayılan yönlendirme yapılandırılıyor..."
+        sudo udhcpc -q -f -i wwan0
+
+        # Durum kontrolü ve hizmeti başlatma
+        echo "Bağlantı durumu kontrol ediliyor..."
+        sudo systemctl status qmi_reconnect.service
+        if ! sudo systemctl is-active --quiet qmi_reconnect.service; then
+            echo "qmi_reconnect hizmeti durdu. Yeniden başlatılıyor..."
+            sudo systemctl start qmi_reconnect.service
+        else
+            echo "qmi_reconnect hizmeti çalışıyor."
+        fi
+    fi
+
+    # 10 saniye bekle
+    sleep 10
+done
+
