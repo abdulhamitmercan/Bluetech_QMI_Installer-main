@@ -1,9 +1,9 @@
 #!/bin/sh
-
+#https://github.com/abdulhamitmercan
 # Dışarıdan gelen APN, kullanıcı adı ve şifreyi al, eğer verilmeyen bir parametre varsa varsayılan değer kullan
 APN="${1:-internet}"
-USERNAME="${2:-default_user}"   # Varsayılan kullanıcı adı
-PASSWORD="${3:-default_pass}"   # Varsayılan şifre
+USERNAME="${2:-default_user}"   # Varsayılan kullanıcı adı https://github.com/abdulhamitmercan
+PASSWORD="${3:-default_pass}"   # Varsayılan şifre bdlhmrcn
 
 while true; do
     # Ping ile bağlantıyı kontrol et

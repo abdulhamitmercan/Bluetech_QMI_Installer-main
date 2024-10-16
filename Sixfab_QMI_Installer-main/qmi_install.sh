@@ -113,3 +113,4 @@ echo -e "${YELLOW}go to $INS_DIR/quectel-CM and run ${GREEN}sudo ./quectel-CM -s
 
 read -p "Press ENTER key to reboot" ENTER
 reboot
+# https://github.com/abdulhamitmercan/Sixfab_QMI_Installer-main
