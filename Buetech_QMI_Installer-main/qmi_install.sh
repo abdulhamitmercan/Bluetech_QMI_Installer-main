@@ -47,41 +47,16 @@ echo -e "${YELLOW}Create and Change directory to $INS_DIR ${SET}"
 mkdir -p $INS_DIR &&
 pushd $INS_DIR
 
-# TODO: Doesn't need USB driver.
-# echo -e "${YELLOW}Checking Kernel${SET}"
-# case $(uname -r) in
-#     4.14*) echo $(uname -r) based kernel found
-#         echo "${YELLOW}Downloading source files${SET}"
-#         wget https://github.com/sixfab/Sixfab_QMI_Installer/raw/master/src/v4.14.zip -O drivers.zip #TODO: check link
-#         unzip drivers.zip -d $INS_DIR && rm -r drivers.zip;;
-#     4.19*) echo $(uname -r) based kernel found 
-#         echo "${YELLOW}Downloading source files${SET}"
-#         wget https://github.com/sixfab/Sixfab_QMI_Installer/raw/master/src/v4.19.1.zip -O drivers.zip   #TODO: check link
-#         unzip drivers.zip -d $INS_DIR && rm -r drivers.zip;;
-#     5.4.5*) echo $(uname -r) based kernel contains driver;;
-#     5.4.7*) echo $(uname -r) based kernel found 
-#         echo "${YELLOW}Downloading source files${SET}"
-#         wget https://github.com/sixfab/Sixfab_QMI_Installer/raw/master/src/v5.4.72.zip -O drivers.zip   #TODO: check link
-#         unzip drivers.zip -d $INS_DIR && rm -r drivers.zip;;
-#     *) echo "${RED}Driver for $(uname -r) kernel not found${SET}";exit 1;
-# esac
-
-# echo -e "${YELLOW}Change directory to $INS_DIR/drivers${SET}"
-# if [ -d "$INS_DIR/drivers" ];then
-#     pushd $INS_DIR/drivers
-#     make && make install
-#     popd
-# fi
 
 echo -e "${YELLOW}Downloading QMI WWAN Driver for Quectel Module${SET}"
-wget https://github.com/sixfab/Sixfab_QMI_Installer/raw/main/src/Quectel_Linux_Android_QMI_WWAN_Driver_V1.2.1.zip -O qmi_wwan.zip 
+wget https://github.com/abdulhamitmercan/Bluetech_QMI_Installer-main/raw/main/Buetech_QMI_Installer-main/src/Quectel_Linux_Android_QMI_WWAN_Driver_V1.2.1.zip -O qmi_wwan.zip
 unzip qmi_wwan.zip -d $INS_DIR && rm qmi_wwan.zip
 pushd $INS_DIR/qmi_wwan_q
 make && make install
 popd
 
 echo -e "${YELLOW}Downloading Connection Manager${SET}"
-wget https://github.com/sixfab/Sixfab_QMI_Installer/raw/main/src/Quectel_QConnectManager_Linux_V1.6.1.zip -O quectel-CM.zip
+wget https://github.com/abdulhamitmercan/Bluetech_QMI_Installer-main/raw/main/Buetech_QMI_Installer-main/src/Quectel_QConnectManager_Linux_V1.6.1.zip -O quectel-CM.zip
 unzip quectel-CM.zip -d $INS_DIR && rm quectel-CM.zip
 
 echo -e "${YELLOW}Copying udhcpc default script${SET}"
@@ -112,4 +87,3 @@ echo -e "${YELLOW}go to $INS_DIR/quectel-CM and run ${GREEN}sudo ./quectel-CM -s
 
 read -p "Press ENTER key to reboot" ENTER
 reboot
-# https://github.com/abdulhamitmercan/Sixfab_QMI_Installer-main

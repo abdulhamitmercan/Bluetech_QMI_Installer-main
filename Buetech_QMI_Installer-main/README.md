@@ -4,7 +4,7 @@ QMI (wwan0) interface installer for providing internet connection using Quectel 
 
 ## How to install
 First download the installation script 
-`wget https://raw.githubusercontent.com/abdulhamitmercan/Sixfab_QMI_Installer-main/main/install_auto_connect.sh`
+`wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh`
 
 Then change the permission 
 `chmod +x qmi_install.sh`
