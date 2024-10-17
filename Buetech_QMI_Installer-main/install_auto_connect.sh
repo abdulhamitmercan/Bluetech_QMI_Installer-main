@@ -5,8 +5,8 @@ echo "What is the APN?"
 read carrierapn
 
 # Dosyaları kendi GitHub deposundan indir
-wget --no-check-certificate https://raw.githubusercontent.com/abdulhamitmercan/Sixfab_QMI_Installer-main/refs/heads/main/Sixfab_QMI_Installer-main/reconnect_service
-wget --no-check-certificate https://raw.githubusercontent.com/abdulhamitmercan/Sixfab_QMI_Installer-main/refs/heads/main/Sixfab_QMI_Installer-main/reconnect_sh
+wget --no-check-certificate https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/reconnect_service -O qmi_reconnect.service
+wget --no-check-certificate https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/reconnect_sh -O qmi_reconnect.sh
 
 # APN yerine kullanıcının girdiği APN'yi koy
 sed -i "s/#APN/$carrierapn/" qmi_reconnect.sh
