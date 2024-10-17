@@ -22,13 +22,13 @@ First, update your system and install the required libraries:
 ## Download the QMI installation script
 
 `wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh`
-`+x qmi_install.sh`
-`./qmi_install.sh`
+`cmod +x qmi_install.sh`
+`sudo ./qmi_install.sh`
 
 ## Download and run the auto-connect script to enable automatic connection
 `wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/install_auto_connect.sh`
-`+x install_auto_connect.sh`
-`./install_auto_connect.sh`
+`cmod +x install_auto_connect.sh`
+`sudo ./install_auto_connect.sh`
 
 Once the installation is completed.
 default APN is `"internet"` 
