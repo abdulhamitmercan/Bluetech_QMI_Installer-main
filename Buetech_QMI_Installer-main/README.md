@@ -18,10 +18,13 @@ sudo apt update && sudo apt install libqmi-utils udhcpc
 `+x install_auto_connect.sh`
 `./install_auto_connect.sh`
 
-Once the installation is completed, your Raspberry Pi will reboot.
+Once the installation is completed.
+default APN is `"internet"` 
+
+your Raspberry Pi will reboot.
 After the reboot,
 
-default APN is `"internet"`
+
 
 
 ## How to Reconnect Using Custom APN, Username, and Password
