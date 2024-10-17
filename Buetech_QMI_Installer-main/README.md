@@ -1,3 +1,17 @@
+# before Bluetech_QMI_Installer
+
+### ⚙️ Module Configuration
+
+Before running the <PPP/QMI> make sure the module is configured to the right settings.
+Using this url how use AT command for QuactelModules `https://www.youtube.com/watch?v=u0azQfE_EgA` 
+
+For Quectel Modules:
+`AT+QCFG="usbnet"` should return 0, otherwise,send `AT+QCFG="usbnet",0` then reboot the module after 10 seconds `AT+CFUN=1,1`
+
+For Telit Modules:
+`AT#USBCFG?` should return 0, otherwise,send `AT#USBCFG=0` then reboot the module after 10 seconds ,`AT#REBOOT`
+
+
 # Bluetech_QMI_Installer
 QMI (wwan0) interface installer for providing internet connection using Quectel modules.
 
