@@ -22,7 +22,7 @@ Once the installation is completed.
 default APN is `"internet"` 
 
 your Raspberry Pi will reboot.
-After the reboot,
+After the reboot,you can use custom APN, username, and password 
 
 
 
