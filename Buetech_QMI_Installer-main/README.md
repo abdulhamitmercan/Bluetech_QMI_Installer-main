@@ -21,7 +21,7 @@ First, update your system and install the required libraries:
 
 ## Download the QMI installation script
 ```bash
-wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh`
+wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh
 cmod +x qmi_install.sh
 sudo ./qmi_install.sh
 ```
