@@ -67,4 +67,4 @@ try:
     print(f"Connection attempt with APN '{apn}', Username '{username}', and Password '{password}'.")
 except subprocess.CalledProcessError as e:
     print(f"An error occurred: {e}")
-
+```
