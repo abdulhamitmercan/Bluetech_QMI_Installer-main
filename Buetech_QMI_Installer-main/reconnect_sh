@@ -18,38 +18,38 @@ while true; do
         # Modemi online moda geçir
         mode=$(sudo qmicli -d /dev/cdc-wdm0 --dms-get-operating-mode)
         if [[ "$mode" != *"online"* ]]; then
-            echo "Modem offline modda. Bağlanıyor..."
+            echo "Modem is offline . connections..."
             sudo qmicli -d /dev/cdc-wdm0 --dms-set-operating-mode='online'
         else
-            echo "Modem zaten online modda."
+            echo "modem is in online mode ."
         fi
 
-        # WWAN0 arayüzünü yapılandır
-        echo "WWAN0 arayüzü yapılandırılıyor..."
+        # WWAN0 interface
+        echo "configuring WWAN0 interfays ..."
         sudo ip link set wwan0 down
         echo 'Y' | sudo tee /sys/class/net/wwan0/qmi/raw_ip
         sudo ip link set wwan0 up
 
-        # Veri formatını kontrol et
-        echo "Veri formatı kontrol ediliyor..."
+        # Veri formatt
+        echo "checking datas format ..."
         sudo qmicli -d /dev/cdc-wdm0 --wda-get-data-format
 
-        # Mobil ağ bağlantısını başlat
-        echo "Mobil ağ bağlantısı başlatılıyor..."
+        # Mobil connection
+        echo "starting mobiles connection ..."
         sudo qmicli -p -d /dev/cdc-wdm0 --device-open-net='net-raw-ip|net-no-qos-header' --wds-start-network="apn='$APN',username='$USERNAME',password='$PASSWORD',ip-type=4" --client-no-release-cid
 
-        # IP adresini ve varsayılan yönlendirmeyi yapılandırmak için udhcpc komutunu çalıştır
-        echo "IP adresi ve varsayılan yönlendirme yapılandırılıyor..."
+        # IP adresss
+        echo "IP adresses and default routes are being made ..."
         sudo udhcpc -q -f -i wwan0
 
         # Durum kontrolü ve hizmeti başlatma
-        echo "Bağlantı durumu kontrol ediliyor..."
+        echo "checking connection..."
         sudo systemctl status qmi_reconnect.service
         if ! sudo systemctl is-active --quiet qmi_reconnect.service; then
-            echo "qmi_reconnect hizmeti durdu. Yeniden başlatılıyor..."
+            echo "qmi_reconnect services stopprd  restarting ..."
             sudo systemctl start qmi_reconnect.service
         else
-            echo "qmi_reconnect hizmeti çalışıyor."
+            echo "qmi_reconnect service running."
         fi
     fi
 
