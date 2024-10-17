@@ -17,8 +17,9 @@ QMI (wwan0) interface installer for providing internet connection using Quectel 
 
 ## Before installing the library for GSM module
 First, update your system and install the required libraries:
-`sudo apt update && sudo apt install libqmi-utils udhcpc`
-
+```bash
+sudo apt update && sudo apt install libqmi-utils udhcpc
+```
 ## Download the QMI installation script
 ```bash
 wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh
