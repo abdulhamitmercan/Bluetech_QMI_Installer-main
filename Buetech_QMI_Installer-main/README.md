@@ -4,21 +4,24 @@ QMI (wwan0) interface installer for providing internet connection using Quectel 
 ## Before installing the library for GSM module
 First, update your system and install the required libraries:
 
-```bash
+
 sudo apt update && sudo apt install libqmi-utils udhcpc
 
 # Download the QMI installation script
-`wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh
-+x qmi_install.sh
-./qmi_install.sh`
+
+`wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/qmi_install.sh`
+`+x qmi_install.sh`
+`./qmi_install.sh`
 
 # Download and run the auto-connect script to enable automatic connection
-`wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/install_auto_connect.sh
-+x install_auto_connect.sh
-./install_auto_connect.sh`
+`wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/install_auto_connect.sh`
+`+x install_auto_connect.sh`
+`./install_auto_connect.sh`
 
 # Once the installation is completed, your Raspberry Pi will reboot.
-# After the reboot, default apn "internet"
+# After the reboot,
+
+# default APN "internet"
 
 
 ## How to Reconnect Using Custom APN, Username, and Password
