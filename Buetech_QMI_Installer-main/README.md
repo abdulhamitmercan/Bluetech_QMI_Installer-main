@@ -30,7 +30,7 @@ sudo ./qmi_install.sh
 ## Download and run the auto-connect script to enable automatic connection
 ```bash
 wget https://raw.githubusercontent.com/abdulhamitmercan/Bluetech_QMI_Installer-main/refs/heads/main/Buetech_QMI_Installer-main/install_auto_connect.sh
-sudo cmod +x install_auto_connect.sh
+sudo chmod +x install_auto_connect.sh
 sudo ./install_auto_connect.sh
 ```
 Once the installation is completed.
